@@ -1,0 +1,6 @@
+employee_id,name,email,designation,dob
+EMP001,John Mathew,john@example.com,Software Engineer,1998
+EMP002,Rahul Kumar,rahul@example.com,QA Engineer,1997
+EMP003,Priya Nair,priya@example.com,HR Executive,1996
+EMP004,Arjun Menon,arjun@example.com,Backend Developer,1999
+EMP005,Anjali Das,anjali@example.com,UI/UX Designer,1998
