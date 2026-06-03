@@ -59,6 +59,35 @@ console.log("Salaries:", salaries);
 
   setMergedData(merged);
 };
+const testBackend = async () => {
+  const response = await fetch(
+    "http://localhost:5000/api/test"
+  );
+
+  const data = await response.json();
+
+  console.log(data);
+};
+const generatePDF = async (employee) => {
+
+  const response = await fetch(
+    "http://localhost:5000/generate-pdf",
+    {
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json"
+      },
+
+      body: JSON.stringify(employee)
+    }
+  );
+
+  const data = await response.json();
+
+  console.log(data);
+};
+
 
   return (
     <div className="container">
@@ -97,6 +126,12 @@ console.log("Salaries:", salaries);
 <button onClick={mergeData}>
   Merge Data
 </button>
+<br />
+<br />
+
+<button onClick={testBackend}>
+  Test Backend Connection
+</button>
         {employees.length > 0 && (
           <table border="1" width="100%">
             <thead>
@@ -133,6 +168,7 @@ console.log("Salaries:", salaries);
         <th>Allowances</th>
         <th>Deductions</th>
         <th>Net Salary</th>
+        <th>PDF</th>
       </tr>
     </thead>
 
@@ -145,6 +181,11 @@ console.log("Salaries:", salaries);
           <td>{employee.allowances}</td>
           <td>{employee.deductions}</td>
           <td>{employee.net_salary}</td>
+          <td>
+  <button onClick={() => generatePDF(employee)}>
+    Generate PDF
+  </button>
+</td>
         </tr>
       ))}
     </tbody>
