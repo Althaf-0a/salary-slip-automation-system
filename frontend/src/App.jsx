@@ -61,7 +61,7 @@ console.log("Salaries:", salaries);
 };
 const testBackend = async () => {
   const response = await fetch(
-    "http://localhost:5000/api/test"
+    "https://salary-slip-backend.onrender.com/api/test"
   );
 
   const data = await response.json();
@@ -71,7 +71,7 @@ const testBackend = async () => {
 const generatePDF = async (employee) => {
 
   const response = await fetch(
-    "http://localhost:5000/generate-pdf",
+    "https://salary-slip-backend.onrender.com/generate-pdf",
     {
       method: "POST",
 
@@ -99,7 +99,7 @@ const generatePDF = async (employee) => {
 const sendEmail = async (employee) => {
 
   const response = await fetch(
-    "http://localhost:5000/send-email",
+    "https://salary-slip-backend.onrender.com/send-email",
     {
       method: "POST",
 
