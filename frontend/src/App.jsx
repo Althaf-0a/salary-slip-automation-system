@@ -127,11 +127,17 @@ const sendEmail = async (employee) => {
           automatically.
         </p>
 
-        <input
-          type="file"
-          accept=".csv"
-          onChange={handleEmployeeFile}
-        />
+        <div className="upload-box">
+  <input
+    type="file"
+    accept=".csv"
+    onChange={handleEmployeeFile}
+  />
+
+  {employees.length > 0 && (
+    <p>Employee file uploaded successfully ✅</p>
+  )}
+</div>
         {employees.length > 0 && (
   <p>Employee file uploaded successfully ✅</p>
 )}
@@ -140,12 +146,17 @@ const sendEmail = async (employee) => {
         <br />
         <br />
 <br />
+<div className="upload-box">
+  <input
+    type="file"
+    accept=".csv"
+    onChange={handleSalaryFile}
+  />
 
-<input
-  type="file"
-  accept=".csv"
-  onChange={handleSalaryFile}
-/>
+  {salaries.length > 0 && (
+    <p>Salary file uploaded successfully ✅</p>
+  )}
+</div>
 {salaries.length > 0 && (
   <p>Salary file uploaded successfully ✅</p>
 )}

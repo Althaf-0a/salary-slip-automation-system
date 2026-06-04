@@ -1,53 +1,80 @@
-* {
+body {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #141e30, #243b55);
 }
 
 .container {
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f4f6f9;
+  padding: 40px;
 }
 
 .card {
-  width: 800px;
   background: white;
   padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  width: 90%;
+  max-width: 1200px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  text-align: center;
+  color: #1e293b;
+  margin-bottom: 10px;
+}
+
+p {
+  text-align: center;
+  color: #475569;
+}
+
+.upload-box {
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
   text-align: center;
 }
 
-.card h1 {
-  color: #1e293b;
-  margin-bottom: 15px;
-}
-
-.card p {
-  color: gray;
-  margin-bottom: 30px;
-}
-
-.button-group {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.button-group button {
-  padding: 12px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+button {
   background: #2563eb;
   color: white;
-  font-size: 15px;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  transition: 0.3s;
 }
 
-.button-group button:hover {
-  opacity: 0.9;
+button:hover {
+  background: #1d4ed8;
+  transform: scale(1.05);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: white;
+}
+
+th {
+  background: #2563eb;
+  color: white;
+  padding: 12px;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+tr:hover {
+  background: #f1f5f9;
 }
