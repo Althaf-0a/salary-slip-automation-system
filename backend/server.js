@@ -1,20 +1,17 @@
 require("dotenv").config();
+const { Resend } = require("resend");
+const resend = new Resend(
+  process.env.RESEND_API_KEY
+);
 const PDFDocument = require("pdfkit");
 const fs = require("fs");
 const path = require("path");
 const express = require("express");
 const cors = require("cors");
-const nodemailer = require("nodemailer");
+
 
 const app = express();
-const transporter = nodemailer.createTransport({
-  service: "gmail",
 
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
 
 app.use(
   cors({
@@ -158,14 +155,20 @@ app.post("/send-email", async (req, res) => {
 
     const employee = req.body;
 
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: employee.email,
-      subject: "Salary Slip",
-      text: "Please find attached your salary slip.",
-    };
+  
 
-    await transporter.sendMail(mailOptions);
+    await resend.emails.send({
+  from: "onboarding@resend.dev",
+
+  to: employee.email,
+
+  subject: "Salary Slip",
+
+  html: `
+    <h2>Salary Slip</h2>
+    <p>Please find your salary slip attached.</p>
+  `,
+});
 
     res.json({
       message: "Email sent successfully",
