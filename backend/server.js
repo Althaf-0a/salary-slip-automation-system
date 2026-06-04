@@ -18,8 +18,10 @@ const transporter = nodemailer.createTransport({
 
 app.use(
   cors({
-    origin:
+    origin: [
+      "http://localhost:5173",
       "https://salary-slip-automation-system-seven.vercel.app",
+    ],
   })
 );
 app.use(express.json());
