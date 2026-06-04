@@ -16,7 +16,12 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-app.use(cors());
+app.use(
+  cors({
+    origin:
+      "https://salary-slip-automation-system-seven.vercel.app",
+  })
+);
 app.use(express.json());
 
 app.get("/", (req, res) => {
