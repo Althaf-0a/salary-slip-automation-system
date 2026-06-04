@@ -83,6 +83,34 @@ const generatePDF = async (employee) => {
     }
   );
 
+  const blob = await response.blob();
+
+  const url = window.URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+
+  a.href = url;
+
+  a.download =
+    `${employee.name}_SalarySlip.pdf`;
+
+  a.click();
+};
+const sendEmail = async (employee) => {
+
+  const response = await fetch(
+    "http://localhost:5000/send-email",
+    {
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json"
+      },
+
+      body: JSON.stringify(employee)
+    }
+  );
+
   const data = await response.json();
 
   console.log(data);
@@ -169,6 +197,7 @@ const generatePDF = async (employee) => {
         <th>Deductions</th>
         <th>Net Salary</th>
         <th>PDF</th>
+        <th>Email</th>
       </tr>
     </thead>
 
@@ -184,6 +213,11 @@ const generatePDF = async (employee) => {
           <td>
   <button onClick={() => generatePDF(employee)}>
     Generate PDF
+  </button>
+</td>
+<td>
+  <button onClick={() => sendEmail(employee)}>
+    Send Email
   </button>
 </td>
         </tr>
