@@ -154,29 +154,21 @@ doc
 });
 app.post("/send-email", async (req, res) => {
 
-  const employee = req.body;
-
-  const mailOptions = {
-
-    from: "althafabubaker0@gmail.com",
-
-    to: employee.email,
-
-    subject: "Salary Slip",
-
-    text:
-`Hello ${employee.name},
-
-Please find attached your salary slip.`
-
-  };
-
   try {
+
+    const employee = req.body;
+
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: employee.email,
+      subject: "Salary Slip",
+      text: "Please find attached your salary slip.",
+    };
 
     await transporter.sendMail(mailOptions);
 
     res.json({
-      message: "Email sent successfully"
+      message: "Email sent successfully",
     });
 
   } catch (error) {
@@ -184,10 +176,12 @@ Please find attached your salary slip.`
     console.log(error);
 
     res.status(500).json({
-      message: "Email failed"
+      message: "Email failed",
+      error: error.message,
     });
 
   }
+
 });
 
 app.listen(5000, () => {
